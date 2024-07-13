@@ -1,0 +1,13 @@
+services:
+  app:
+    build: .
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "8080:8080"
+    environment:
+      - XDEBUG_MODE=debug
+      - XDEBUG_CONFIG=client_host=host.docker.internal client_port=9003
+      - CI_ENVIRONMENT=development
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
